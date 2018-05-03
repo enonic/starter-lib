@@ -9,13 +9,13 @@ public final class ParameterPassingExampleHandler
 
     private Object[] array;
 
-    private Map<String, ?> object;
+    private Map<String, Object> object;
 
     public ExampleObjectMapper execute()
     {
         String text = this.text == null ? "" : this.text;
         Object[] array = this.array == null ? new Object[0] : this.array;
-        Map<String, ?> object = this.object == null ? new HashMap<>() : this.object;
+        Map<String, Object> object = this.object == null ? new HashMap<>() : this.object;
 
         return new ExampleObjectMapper( text, array, object );
     }
@@ -30,7 +30,7 @@ public final class ParameterPassingExampleHandler
         this.array = array;
     }
 
-    public void setObject( final Map<String, ?> object )
+    public void setObject( final Map<String, Object> object )
     {
         this.object = object;
     }

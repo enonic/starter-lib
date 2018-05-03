@@ -12,9 +12,9 @@ public final class ExampleObjectMapper
 
     private final Object[] array;
 
-    private final Map<String, ?> object;
+    private final Map<String, Object> object;
 
-    public ExampleObjectMapper( String text, Object[] array, Map<String, ?> object )
+    public ExampleObjectMapper( String text, Object[] array, Map<String, Object> object )
     {
         this.text = text;
         this.array = array;

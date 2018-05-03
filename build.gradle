@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'maven'
+    id 'com.enonic.xp.doc' version '1.0.7'
 }
 
 repositories {
