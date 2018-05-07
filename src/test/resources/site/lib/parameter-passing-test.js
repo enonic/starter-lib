@@ -1,4 +1,4 @@
-var myJavaLib = require('/lib/example-java-lib');
+var myJavaLib = require('/lib/example/java-lib');
 var testing = require('/lib/xp/testing');
 
 exports.testSetParams = function () {

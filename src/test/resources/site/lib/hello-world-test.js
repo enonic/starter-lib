@@ -1,4 +1,4 @@
-var myLib = require('/lib/example-js-lib');
+var myLib = require('/lib/example/js-lib');
 var testing = require('/lib/xp/testing');
 
 exports.testHello = function () {

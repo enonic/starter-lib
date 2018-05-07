@@ -81,14 +81,13 @@ gradlew.bat deploy
 
 Assets and schemas (content types, mixins, etc.) defined in a library will be added to an application when the app includes the library.
 
-To add assets or schema files to a library simply add the files with the same path as they would be used in an application.
-
+To add assets or schema files to a library simply add the files with the same path as they would be used in the application.
 
 == JavaScript code
 
 An XP library project may contain several JavaScript library files. Each of those files can be imported independently to use the functions exported.
 
-To create a new JavaScript library simply create a file with extension ``.js`` inside the project directory with path ``src/main/resources/lib/<name>.js``
+To create a new JavaScript library simply create a file with extension ``.js`` inside the project directory with path ``src/main/resources/lib/<org>/<name>/index.js``
 
 A JavaScript library is similar to a NodeJs module. It may contain a number of functions and variables.
 Functions and variables declared in the global scope in the JavaScript file are considered internal. To expose functions or variables they must be set on the ``exports`` object.
@@ -119,6 +118,10 @@ exports.sayHello = function(name) { # <4>
 An XP library is just a standard Java Archive ``.jar`` file. That means it can also contain Java classes.
 
 Java packages and classes should be placed under path ``src/main/java``. They will be compiled and included in the library by Gradle.
+
+NOTE: There is a small performance gain by coding in Java instead of JavaScript, but most of the time it is not worth it. JavaScript code in XP is compiled to bytecode and executed natively on the JVM.
+
+The main reason for using Java in a library is to do things that are not directly available with JavaScript, like accessing the network or using 3rd party Java libraries.
 
 === Instantiate Java class
 
@@ -227,6 +230,24 @@ Finally, for returning values of type binary stream from Java, it should be wrap
 This is required by XP to allow returning it from an HTTP request, or add it as a content attachment.
 
 
+== Libraries and Applications
+
+When a library is included in an application, the content of the `src/main/resources` directory in the library will be extracted over the same directory in the application.
+This is done during build time of the app, so the source code of the application is not modified, just the generated application ``.jar`` file.
+
+It is important to name JavaScript files correctly, to avoid conflicts with existing files in the applications or from other libraries.
+If a file with the same path exists in the application or in another included library, one of them would be overwritten, making it fail when the application code is executed.
+
+It is a best practice to place ``.js`` library files inside a folder with the name of the organization or author, to make sure there won't be any conflicts.
+
+The recommended pattern is ``src/main/resources/lib/<organization>/<library-name>/index.js`` .
+
+For example: ``src/main/resources/lib/acme/fancy-lib/index.js`` .
+
+
+If the library contains Java code, the compiled classes will be included in the application. In this case the standard package namespacing is normally enough to avoid conflicts.
+
+
 == Using the library
 
 To use the newly created library in an XP application, first we need to add the dependency and repository from the library to the app ``build.gradle`` file:
@@ -243,7 +264,7 @@ The library can then be used from any JavaScript controller by just requiring th
 
 [source,js]
 ----
-var myLib = require('/lib/mylib');
+var myLib = require('/lib/example/my-lib');
 
 exports.get = function (req) {
     var something = myLib.doSomething('abc', 250);
