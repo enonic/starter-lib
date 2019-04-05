@@ -1,6 +1,6 @@
 plugins {
     id 'java'
-    id 'maven'
+    id 'maven-publish'
 }
 
 repositories {
@@ -17,5 +17,6 @@ dependencies {
     // compile "com.foo.mypackage:artifact-name:1.0.0"
 
     testCompile "com.enonic.xp:testing:${xpVersion}"
+    testCompile 'org.mockito:mockito-core:+'
     testCompile 'junit:junit:4.12'
 }
