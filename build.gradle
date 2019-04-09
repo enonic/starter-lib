@@ -1,14 +1,13 @@
 plugins {
     id 'java'
     id 'maven-publish'
+    id 'com.enonic.xp.base' version '2.0.0'
 }
 
 repositories {
     mavenLocal()
     jcenter()
-    maven {
-        url 'http://repo.enonic.com/public'
-    }
+    xp.enonicRepo()
 }
 
 dependencies {
