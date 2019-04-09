@@ -1,14 +1,13 @@
 plugins {
     id 'java'
-    id 'maven'
+    id 'maven-publish'
+    id 'com.enonic.xp.base' version '2.0.0'
 }
 
 repositories {
     mavenLocal()
     jcenter()
-    maven {
-        url 'http://repo.enonic.com/public'
-    }
+    xp.enonicRepo()
 }
 
 dependencies {
@@ -17,5 +16,6 @@ dependencies {
     // compile "com.foo.mypackage:artifact-name:1.0.0"
 
     testCompile "com.enonic.xp:testing:${xpVersion}"
+    testCompile 'org.mockito:mockito-core:+'
     testCompile 'junit:junit:4.12'
 }
