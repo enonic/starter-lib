@@ -6,7 +6,8 @@ plugins {
 
 repositories {
     mavenLocal()
-    jcenter()/*
+    jcenter()
+    xp.enonicRepo()/*
     maven {
         url 'http://repo.mysite.com/public'
     }*/
