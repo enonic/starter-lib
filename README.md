@@ -9,17 +9,46 @@ This starter kit will set up the basics for creating a new library project for E
 
 ## For XP 7 users
 
-You first need to install [Enonic CLI](https://developer.enonic.com/docs/enonic-cli/) and choose _starter-lib_ from the list of starters when asked. Then run the following commands to build and deploy it:
+You first need to install [Enonic CLI](https://developer.enonic.com/docs/enonic-cli/) and choose _starter-lib_ from the list of starters when asked.
 
 ```bash
 ~ $ enonic project create
 ... Answer wizard question
-
-~ $ cd <project-folder>
-~/new-project $ enonic project deploy
 ```
 
-You can now build your lib and use it as a dependency in other apps
+Configure remote URL for your Maven repository in the `build.gradle` file to enable using the lib as a dependency in other apps:
+
+```
+repositories {
+    mavenLocal()
+    maven {
+        url 'http://repo.mysite.com/public'
+    }
+}
+```
+
+Run the following command to build the lib:
+
+```bash
+~ $ cd <project-folder>
+~/new-project $ enonic project build
+```
+
+Run the following command to publish the lib in the local Maven repo:
+
+```bash
+~ $ cd <project-folder>
+~/new-project $ enonic project gradle publishToMavenLocal
+```
+
+Run the following command to publish the lib in the public Maven repo:
+
+```bash
+~ $ cd <project-folder>
+~/new-project $ enonic project gradle publish
+```
+
+Once published, your lib can be used as a dependency in other apps
 
 
 ## For XP 6.x users
