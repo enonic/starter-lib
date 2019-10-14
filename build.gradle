@@ -13,6 +13,14 @@ repositories {
     }*/
 }
 
+publishing {
+    publications {
+        myLibrary(MavenPublication) {
+            from components.java
+        }
+    }
+}
+
 dependencies {
     compile "com.enonic.xp:script-api:${xpVersion}"
     // add other compile dependencies here
