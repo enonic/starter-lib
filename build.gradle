@@ -7,18 +7,7 @@ plugins {
 repositories {
     mavenLocal()
     jcenter()
-    xp.enonicRepo()/*
-    maven {
-        url 'http://repo.mysite.com/public'
-    }*/
-}
-
-publishing {
-    publications {
-        myLibrary(MavenPublication) {
-            from components.java
-        }
-    }
+    xp.enonicRepo()
 }
 
 dependencies {
