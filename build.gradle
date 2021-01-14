@@ -17,5 +17,5 @@ dependencies {
 
     testCompile "com.enonic.xp:testing:${xpVersion}"
     testCompile 'org.mockito:mockito-core:2.+'
-    testCompile 'junit:junit:4.12'
+    testCompile 'junit:junit:4.13.1'
 }
