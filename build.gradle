@@ -6,16 +6,16 @@ plugins {
 
 repositories {
     mavenLocal()
-    jcenter()
+    mavenCentral()
     xp.enonicRepo()
 }
 
 dependencies {
-    compile "com.enonic.xp:script-api:${xpVersion}"
+    implementation "com.enonic.xp:script-api:${xpVersion}"
     // add other compile dependencies here
     // compile "com.foo.mypackage:artifact-name:1.0.0"
 
-    testCompile "com.enonic.xp:testing:${xpVersion}"
-    testCompile 'org.mockito:mockito-core:4.0.0'
-    testCompile 'junit:junit:4.13.2'
+    testImplementation "com.enonic.xp:testing:${xpVersion}"
+    testImplementation 'org.mockito:mockito-core:4.0.0'
+    testImplementation 'junit:junit:4.13.2'
 }
