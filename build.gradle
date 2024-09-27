@@ -10,6 +10,14 @@ repositories {
     xp.enonicRepo()
 }
 
+tasks.register('dev', Exec) {
+    if (org.gradle.internal.os.OperatingSystem.current().isWindows()) {
+        commandLine 'cmd', '/c', 'gradlew.bat', 'deploy', '-t'
+    } else {
+        commandLine './gradlew', 'deploy', '-t'
+    }
+}
+
 dependencies {
     implementation "com.enonic.xp:script-api:${xpVersion}"
     // add other compile dependencies here
