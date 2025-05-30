@@ -9,6 +9,7 @@ updates:
       - "rymsha"
     reviewers:
       - "rymsha"
+    target-branch: "next"
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
@@ -18,3 +19,4 @@ updates:
       - "rymsha"
     reviewers:
       - "rymsha"
+    target-branch: "next"
